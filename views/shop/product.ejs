@@ -1,36 +1,32 @@
-<%- include ../partials/header %>  <%- include ../partials/categories-navbar %>
-<div class="container">
-  <!-- Flash messages -->
-  <div class="row mt-3 mb-3">
-    <div class="col-md-12 m-auto">
-      <% if (successMsg) { %>
-      <div id="success" class="alert alert-success">
-        <%= successMsg %>
+<%- include ../partials/header %>
+  <div class="container">
+    <!-- Flash messages -->
+    <div class="row mt-3 mb-3">
+      <div class="col-md-12 m-auto">
+        <% if (successMsg) { %>
+          <div id="success" class="alert alert-success">
+            <%= successMsg %>
+          </div>
+          <% } else { %>
+            <div id="success" class="alert alert-success d-none"></div>
+            <% } %>
       </div>
-      <% } else { %>
-      <div id="success" class="alert alert-success d-none"></div>
-      <% } %>
-    </div>
-    <div class="col-md-12 m-auto">
-      <% if (errorMsg) { %>
-      <div id="error" class="alert alert-danger">
-        <%= errorMsg %>
+      <div class="col-md-12 m-auto">
+        <% if (errorMsg) { %>
+          <div id="error" class="alert alert-danger">
+            <%= errorMsg %>
+          </div>
+          <% } else { %>
+            <div id="error" class="alert alert-danger d-none"></div>
+            <% } %>
       </div>
-      <% } else { %>
-      <div id="error" class="alert alert-danger d-none"></div>
-      <% } %>
     </div>
-  </div>
-  <!-- Product info -->
-  <div class="row mt-4 mb-4">
-    <div class="col-md-5 mt-2 mr-2 ml-auto">
-      <img
-        src="<%=product.imagePath%>"
-        class="img-fluid product-img"
-        alt="product image"
-      />
-    </div>
-    <div class="col-md-5 mt-2 mb-2 ml-2 mr-auto text-dark">
+    <!-- Product info -->
+    <div class="row">
+      <div class="col-md-5 mt-2 mr-2 ml-auto">
+        <img src="<%=product.imagePath%>" class="img-fluid product-img" alt="product image" />
+      </div>
+      <!-- <div class="col-md-5 mt-2 mb-2 ml-2 mr-auto text-dark">
       <h2><%=product.title%></h2>
       <hr />
       <p class="price">USD $<%=product.price%></p>
@@ -50,7 +46,37 @@
       <% } else { %>
       <p class="is-not-available text-center">Sold out</p>
       <%} %>
+    </div> -->
+      <div class="col-md-5 mt-2 mb-2 ml-2 mr-auto">
+        <div class="single-product-details">
+          <h2><%=product.title%></h2>
+          <!-- <h5> <del>$ 60.00</del> $40.79</h5> -->
+          <h5><%=product.price%>đ</h5>
+            <% if(product.available) {%>
+              <p class="available-stock" style="color: rgb(79, 208, 231);"><span> Còn hàng </span></p>
+              <% } else { %>
+                <p class="available-stock" style="color: rgb(180, 32, 52);"><span> Hết hàng </span></p>
+            <%} %>
+          <h4>Thông tin chi tiết:</h4>
+          <p><%=product.description%></p>
+          <ul>
+            <li>
+              <div class="form-group quantity-box">
+                <label class="control-label">Quantity</label>
+                <input class="form-control" value="0" min="0" max="20" type="number">
+              </div>
+            </li>
+          </ul>
+          <% if(product.available) {%>
+            <div class="price-box-bar">
+              <div class="cart-and-bay-btn">
+                <a class="btn hvr-hover" data-fancybox-close="" href="/add-to-cart/<%=product._id%>">Thêm vào giỏ hàng</a>
+              </div>
+            </div>
+            <% } else { %>
+            <%} %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<%- include ../partials/footer %>
+  <%- include ../partials/footer %>

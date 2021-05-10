@@ -32,6 +32,20 @@ const userContactUsValidationRules = () => {
   ];
 };
 
+const validPhoneNumber = (mobile) => {
+  var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+    if(mobile !==''){
+        if (vnf_regex.test(mobile) == false) 
+        {
+            alert('Số điện thoại của bạn không đúng định dạng!');
+        }else{
+            alert('Số điện thoại của bạn hợp lệ!');
+        }
+    }else{
+        alert('Bạn chưa điền số điện thoại!');
+    }
+}
+
 const validateSignup = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

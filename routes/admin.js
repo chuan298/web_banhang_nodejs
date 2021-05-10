@@ -15,8 +15,8 @@ const adminBro = new AdminBro({
   databases: [mongoose],
   rootPath: "/admin",
   branding: {
-    companyName: "BestBags",
-    logo: "/images/shop-icon.png",
+    companyName: "Company",
+    logo: "/images/logo.png",
     softwareBrothers: false,
   },
   resources: [
@@ -169,6 +169,7 @@ const ADMIN = {
 
 const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
   authenticate: async (email, password) => {
+    console.log(ADMIN.password === password, ADMIN.email === email)
     if (ADMIN.password === password && ADMIN.email === email) {
       return ADMIN;
     }

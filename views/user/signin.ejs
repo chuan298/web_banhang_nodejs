@@ -3,8 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 m-auto">
-      <h1 class="mt-4 mb-4">Sign In Page</h1>
-      <!-- Flash message -->
+      <h1 class="mt-4 mb-4" style="text-align: center;">ĐĂNG NHẬP</h1>
       <% if(errorMsg !=null && errorMsg.length>0) {%>
       <div id="flash-msg" class="alert alert-danger">
         <%=errorMsg %>
@@ -12,11 +11,11 @@
       <%}%>
       <form action="/user/signin" method="POST">
         <div class="form-group">
-          <label for="email">Email address</label>
+          <label for="email">Địa chỉ email</label>
           <input type="email" class="form-control" name="email" id="email" />
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Mật khẩu</label>
           <input
             type="password"
             class="form-control"
@@ -25,13 +24,20 @@
           />
         </div>
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
-        <button type="submit" class="btn btn-primary button-style">
-          Sign In
-        </button>
+        <div class="text-center">
+          <button type="submit" class="btn hvr-hover">Đăng nhập
+          </button>
+        </div>
+        
+          
       </form>
-      <p class="mt-3">
-        Don't have an account? <a href="/user/signup"> Sign Up!</a>
+      <p class="mt-3" style="text-align: center;">
+        Bạn chưa có tài khoản? <a href="/user/signup"> Hãy đăng ký!</a>
       </p>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
   </div>
 </div>

@@ -30,6 +30,13 @@ router.get("/careers", (req, res) => {
   });
 });
 
+//GET: display careers page
+router.get("/blogs", (req, res) => {
+  res.render("pages/blogs", {
+    pageName: "Blogs",
+  });
+});
+
 //GET: display contact us page and form with csrf tokens
 router.get("/contact-us", (req, res) => {
   const successMsg = req.flash("success")[0];
